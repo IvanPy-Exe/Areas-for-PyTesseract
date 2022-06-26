@@ -1,25 +1,20 @@
-# from ctypes import windll
-# import pygame
-
-# pygame.init()
-# screen = pygame.display.set_mode((100,100))
-# # screen = pygame.display.set_mode((100,100), pygame.NOFRAME)
-
-# SetWindowPos = windll.user32.SetWindowPos
-# x, y = 0, 0
-# SetWindowPos(pygame.display.get_wm_info()['window'], -1, x, y, 0, 0, 0x0001)
-
 import pygame
-
 import win32api
+
 from win32api import RGB
 from win32gui import GetWindowLong, SetWindowLong, SetLayeredWindowAttributes
 from win32con import GWL_EXSTYLE, WS_EX_LAYERED, LWA_COLORKEY
 
-from threading import Thread
-# Thread(target=self.commands,daemon=True).start()
+class yaml:
+	from yaml import safe_load, dump
 
-from pyml import yaml
+	def save(data,path):
+		with open(path,'w',encoding='UTF-8') as file:
+			yaml.dump(data, file, allow_unicode=True, sort_keys=False)
+
+	def load(path):
+		with open(path,'r',encoding='UTF-8') as file:
+			return yaml.safe_load(file)
 
 class mouse:
 	button = {1:0,2:0}
